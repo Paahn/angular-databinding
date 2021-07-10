@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -9,7 +9,8 @@ export class CockpitComponent implements OnInit {
   @Output() public serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('blueprintCreated') public blueprintAdded = new EventEmitter<{serverName: string, serverContent: string}>();
   // public newServerName = '';
-  public newServerContent = '';
+  // public newServerContent = '';
+  @ViewChild('serverContentInput', { static: true }) serverContentInput;
 
   constructor() { }
 
