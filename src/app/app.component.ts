@@ -15,4 +15,13 @@ export class AppComponent {
       content: serverData.serverContent
     });
   }
+
+  onAddBlueprint(blueprintData: {serverName: string, serverContent: string}) {
+    this.serverElements.push({
+      type: 'blueprint',
+      name: blueprintData.serverName,
+      content: blueprintData.serverContent
+    });
+  }
+
 }
