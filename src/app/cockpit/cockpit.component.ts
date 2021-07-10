@@ -8,8 +8,6 @@ import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '
 export class CockpitComponent implements OnInit {
   @Output() public serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('blueprintCreated') public blueprintAdded = new EventEmitter<{serverName: string, serverContent: string}>();
-  // public newServerName = '';
-  // public newServerContent = '';
   @ViewChild('serverContentInput', { static: true }) serverContentInput: ElementRef;
 
   constructor() { }
@@ -18,18 +16,17 @@ export class CockpitComponent implements OnInit {
   }
 
   public onAddServer(nameInput: HTMLInputElement) {
-    console.log(this.serverContentInput);
-    // this.serverCreated.emit({
-    //   serverName: nameInput.value, 
-    //   serverContent: this.newServerContent
-    // });
+    this.serverCreated.emit({
+      serverName: nameInput.value, 
+      serverContent: this.serverContentInput.nativeElement.value
+    });
   }
 
   public onAddBlueprint(nameInput: HTMLInputElement) {
-  //   this.blueprintAdded.emit({
-  //     serverName: nameInput.value, 
-  //     serverContent: this.newServerContent
-  //   })
+    this.blueprintAdded.emit({
+      serverName: nameInput.value, 
+      serverContent: this.serverContentInput.nativeElement.value
+    })
   }
 
 }
