@@ -28,4 +28,8 @@ export class AppComponent {
     this.serverElements[0].name = 'Changed!!!';
   }
 
+  public onDestroyFirst() {
+    this.serverElements.splice(0, 1);
+  }
+
 }
