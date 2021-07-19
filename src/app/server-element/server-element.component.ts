@@ -10,7 +10,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 
 @Component({
@@ -31,6 +33,7 @@ export class ServerElementComponent implements
  {
   @Input('servElement') public element: { type: string, name: string, content: string };
   @Input() name: string;
+  @ViewChild('heading', {static: true}) header: ElementRef;
 
   constructor() {
     console.log('constructor');
@@ -43,6 +46,7 @@ export class ServerElementComponent implements
 
   public ngOnInit(): void {
     console.log('ngOnInit');
+    console.log('header in OnInit: ', this.header.nativeElement.textContent);
   }
 
   public ngDoCheck(): void {
@@ -59,6 +63,7 @@ export class ServerElementComponent implements
 
   public ngAfterViewInit(): void {
     console.log("ngAfterViewInit");
+    console.log('header in AfterViewInit: ', this.header.nativeElement.textContent);
   }
 
   public ngAfterViewChecked(): void {
